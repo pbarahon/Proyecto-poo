@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+
+
+public class Orden{
+  private String codTecnico;
+  private String codigo;
+  private String fecha;
+  private TipoAuto tipoAuto;
+  protected String placa;
+  private ArrayList<Servicio> listaServicios;
+  private ArrayList <Integer> listaCantidad;
+  private double total;
+
+  public Orden(String ct, String c, String f, TipoAuto tA, String p, ArrayList<Servicio> lS, ArrayList<Integer> lC, double t){
+    codTecnico=ct;
+    codigo=c;
+    fecha=f;
+    tipoAuto=tA;
+    placa=p;
+    listaServicios=lS;
+    listaCantidad=lC;
+    total=t;
+  }
+
+  public String getCodigo(){
+    return codigo;
+  } 
+  
+  public String getFecha(){
+    return fecha;
+  } 
+
+  public String getPlaca(){
+    return placa;
+  } 
+
+  public String getTipoAuto(){
+    return tipoAuto;
+  }
+
+  public ArrayList<Servicio> getLServicios(){
+    return listaServicios;
+  }
+
+  public ArrayList<Integer> getLCantidad(){
+    return listaCantidad;
+  }
+}
