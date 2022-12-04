@@ -1,0 +1,35 @@
+public void generarFacturas(String codigo, String fecha, ArrayList<Cliente> listaClientes, ArrayList<Orden> listaOrdenes){
+    int total=0;
+    Cliente prueba = new Cliente(codigo," ", " ", " ", TipoCliente.EMPRESARIAL);
+    if (listaClientes.contains(prueba)){
+      int ind = listaClientes.indexOf(prueba);
+      Cliente empresa = listaClientes.get(ind);
+      System.out.println("Encontrado:" + e + " "+ e.getClass() );
+      if(e.getTipo()!=TipoCliente.EMPRESARIAL){
+        System.out.println("El cliente ingresado no es del tipo empresarial.");
+      }
+      else{
+        System.out.println("Generando la factura para el cliente "+empresa.getNombre());
+        System.out.println("Empresa: "+empresa.getNombre());
+        System.out.println("Periodo de facturación: "+fecha);
+        System.out.println("Detalle de servicios: ");
+        System.out.println("#Placa     Fecha     Tipo       Servicio          Cantidad   Total ");
+        for(int i=0;i<listaOrdenes.size();i++){
+          Orden o = listaOrdenes.get(i);
+          if(o.getFecha()==fecha && o.getCodigo()==codigo){
+            for(int x=0;x<o.getLServicios().size();x++){
+              System.out.println(o.getPlaca()+"     "+o.getFecha()+"     "+o.getTipoAuto()+"       "+o.getLServicios().get(x).getNombre()+"          "+o.getLCantidad().get(x)+"   "+o.getLServicios().get(x).getPrecio*o.getLCantidad().get(x));
+              total+=o.getLServicios().get(x).getPrecio*o.getLCantidad().get(x));
+              }
+            total+=50;
+            System.out.println("Tarifa empresarial $50");
+            System.out.println("Total a pagar: "+total);
+            }
+          }
+        }
+      }
+    }
+    else{
+      System.out.println("No se encuentra un cliente con ese código.");
+    }
+}
