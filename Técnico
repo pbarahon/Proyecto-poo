@@ -1,0 +1,53 @@
+public void generarOrdenDeServicio(ArrayList<Orden> listaOrdenes, ArrayList<Servicio> listaServicios){
+    
+    double total;
+    String cod;
+    Scanner sc1 = new Scanner(System.in);
+    System.out.println("Ingrese el codigo del cliente: ");
+    String codigo1 = sc1.nextLine();
+    System.out.println("Ingrese la fecha de la orden [Año-Mes]: ");
+    String fecha1 = sc1.nextLine();
+    System.out.println("Ingrese un número segun corresponda [1=AUTO, 2=MOTOCICLETA, 3=BUS]: ");
+    int numtA = sc1.nextInt();
+    sc1.nextLine();
+    System.out.println("Ingrese la placa el vehículo:");
+    String placa1 = sc1.nextLine();
+    System.out.println("A continuación deberá ingresar los servicios realizados. Si no desesa ingresar más servicios, por favor escriba -1.");
+    int ind;
+    while(cod != "-1"){
+    System.out.println("Ingrese el código del servicio: ");
+    cod = sc1.nextLine();
+    Servicio prueba = new Servicio(cod," ", 0);
+    System.out.println("Ingrese la cantidad de veces que se utilizó el servicio: ");
+    Integer cant = sc1.nextInt();
+      lc.add(cant);
+    sc1.nextLine();
+    if (listaServicios.contains(prueba)){
+      ind = listaServicios.indexOf(prueba);
+      Servicio servicio = listaServicios.get(ind);
+      ls.add(servicio);
+      }
+    total+=(cant*servicio.getPrecio());
+    }
+    System.out.println("El valor a pagar es "+total);
+    if(numtA==1){
+      listaOrdenes.add(new Orden(codigo, c, f, TipoAuto.AUTOMOVIL, p, ls, lc, total));
+    }
+    if(numtA==2){
+      listaOrdenes.add(new Orden(codigo, c, f, TipoAuto.MOTOCICLETA, p, ls, lc, total));
+    }
+    else{
+      listaOrdenes.add(new Orden(codigo, c, f, TipoAuto.BUS, p, ls, lc, total));
+    }
+    
+    sc1.close();
+  }
+
+  //Esto devuelve un String con el email que envia el técnico, la idea es que esto se almacene en una lista en el main, para tenerlos guardados
+  public String reportarFaltaInsumos(){
+    Scanner sc2 = new Scanner(System.in);
+    System.out.println("A continuación escriba su solicitud: ");
+    String reporte = sc2.nextLine();
+    sc2.close();
+    return reporte;
+  }
